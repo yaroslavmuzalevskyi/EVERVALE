@@ -21,7 +21,7 @@ const Header = () => {
           console.log("Active tab:", tab.id);
         }}
       />
-      <Button text="Request Catalog" />
+      <Button variant="header">Request Catalog</Button>
     </div>
   );
 };
