@@ -5,16 +5,23 @@ import { cn } from "../../lib/utils";
 
 interface HeroSectionProps {
   contentWidthClass?: string;
+  className?: string;
+  sectionId?: string;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
   contentWidthClass = "max-w-4xl",
+  className,
+  sectionId,
 }) => {
   return (
-    <section className="flex w-full justify-center mt-52">
+    <section
+      id={sectionId}
+      className={cn("flex w-full justify-center mt-52", className)}
+    >
       <div
         className={cn(
-          "flex w-full flex-col items-center gap-6 text-center px-4",
+          "flex w-full flex-col items-center gap-6 text-center",
           contentWidthClass
         )}
       >

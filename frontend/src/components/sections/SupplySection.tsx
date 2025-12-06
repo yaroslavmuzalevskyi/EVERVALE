@@ -3,10 +3,19 @@ import Image from "next/image";
 import Card from "../common/Card";
 import InfoContainer from "../common/InfoContainer";
 import badge from "../../../public/icons/badge.svg";
+import { cn } from "../../lib/utils";
 
-const SupplySection = () => {
+interface SupplySectionProps {
+  className?: string;
+  sectionId?: string;
+}
+
+const SupplySection: React.FC<SupplySectionProps> = ({
+  className,
+  sectionId,
+}) => {
   return (
-    <section>
+    <section id={sectionId} className={cn("w-full", className)}>
       <Card
         width="1180px"
         height="640px"

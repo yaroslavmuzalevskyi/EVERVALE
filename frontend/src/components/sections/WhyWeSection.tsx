@@ -11,6 +11,7 @@ import protectionIcon from "../../../public/icons/protection.svg";
 import growIcon from "../../../public/icons/grow.svg";
 import dnaIcon from "../../../public/icons/dna.svg";
 import chainIcon from "../../../public/icons/chain.svg";
+import { cn } from "../../lib/utils";
 
 const cards = [
   {
@@ -43,10 +44,18 @@ const cards = [
   },
 ];
 
-const WhyWeSection = () => {
+interface WhyWeSectionProps {
+  className?: string;
+  sectionId?: string;
+}
+
+const WhyWeSection: React.FC<WhyWeSectionProps> = ({
+  className,
+  sectionId,
+}) => {
   return (
-    <section className="flex flex-col gap-20">
-      <div className=" w-full flex justify-between">
+    <section id={sectionId} className={cn("flex flex-col gap-16", className)}>
+      <div className="flex w-full flex-col items-left gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
         <InfoContainer
           title="Why we?"
           titleClassName="display-xl text-pr_w"
@@ -56,15 +65,17 @@ const WhyWeSection = () => {
           Evervale is a new generation of cannabis genetics <br /> provider
           built on transparency and precision.
         </InfoContainer>
-        <Button>Request product catalog</Button>
+        <div className="flex w-full justify-start md:w-auto md:justify-end">
+          <Button>Request product catalog</Button>
+        </div>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 justify-items-center md:grid-cols-2">
         {cards.map((card) => (
           <Card
             key={card.title}
-            width="580px"
-            height="420px"
-            className="relative h-full overflow-hidden"
+            width="w-full"
+            height=""
+            className="relative h-full overflow-hidden transition-all duration-300 ease-out hover:rounded-bl-[12px] hover:rounded-tr-[12px] hover:rounded-br-3xl hover:rounded-tl-3xl"
           >
             <Image
               src={card.background}

@@ -6,10 +6,19 @@ import Image from "next/image";
 import facebookIcon from "../../../public/icons/facebook-logo.svg";
 import twitterIcon from "../../../public/icons/twitter-logo.svg";
 import instagramIcon from "../../../public/icons/instagram-logo.svg";
+import { cn } from "../../lib/utils";
 
-const ContactSection = () => {
+interface ContactSectionProps {
+  className?: string;
+  sectionId?: string;
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({
+  className,
+  sectionId,
+}) => {
   return (
-    <section className="w-full mb-52">
+    <section id={sectionId} className={cn("w-full mb-52", className)}>
       <div className="flex flex-col gap-14">
         <InfoContainer
           title="Get in Touch."
@@ -40,7 +49,7 @@ const ContactSection = () => {
               <div className="mt-3 flex flex-wrap gap-4">
                 <a
                   href="#"
-                  className="flex h-12 w-[130px] items-center gap-2 rounded-full border border-pr_y/70 px-4 text-pr_y transition hover:bg-pr_y/10"
+                  className="flex h-12 w-[130px] items-center gap-2 rounded-full border border-pr_y/70 px-4 text-pr_y transition-all duration-300 ease-out hover:bg-pr_y/10 hover:rounded-bl-none"
                 >
                   <Image
                     src={facebookIcon}
@@ -53,7 +62,7 @@ const ContactSection = () => {
                 </a>
                 <a
                   href="#"
-                  className="flex h-12 w-[130px] items-center gap-2 rounded-full border border-pr_y/70 px-4 text-pr_y transition hover:bg-pr_y/10"
+                  className="flex h-12 w-[130px] items-center gap-2 rounded-full border border-pr_y/70 px-4 text-pr_y transition-all duration-300 ease-out hover:bg-pr_y/10 hover:rounded-bl-none"
                 >
                   <Image
                     src={twitterIcon}
@@ -66,7 +75,7 @@ const ContactSection = () => {
                 </a>
                 <a
                   href="#"
-                  className="flex h-12 w-[130px] items-center gap-2 rounded-full border border-pr_y/70 px-4 text-pr_y transition hover:bg-pr_y/10"
+                  className="flex h-12 w-[130px] items-center gap-2 rounded-full border border-pr_y/70 px-4 text-pr_y transition-all duration-300 ease-out hover:bg-pr_y/10 hover:rounded-bl-none"
                 >
                   <Image
                     src={instagramIcon}

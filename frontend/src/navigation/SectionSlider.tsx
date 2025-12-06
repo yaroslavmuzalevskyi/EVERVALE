@@ -1,24 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { SectionTab } from "../types/navigation";
-
-type Tab = {
-  id: string;
-  label: string;
-};
-
-type Props = {
-  tabs: Tab[];
-};
 
 interface SectionSliderProps {
   tabs: SectionTab[];
+  activeId: string;
   onChange?: (tab: SectionTab) => void;
 }
 
-export function SectionSlider({ tabs, onChange }: SectionSliderProps) {
-  const [activeId, setActiveId] = useState(tabs[0]?.id);
+export function SectionSlider({
+  tabs,
+  activeId,
+  onChange,
+}: SectionSliderProps) {
   const activeIndex = Math.max(
     0,
     tabs.findIndex((t) => t.id === activeId)
@@ -26,29 +20,33 @@ export function SectionSlider({ tabs, onChange }: SectionSliderProps) {
   const tabCount = tabs.length || 1;
 
   const handleClick = (tab: SectionTab) => {
-    setActiveId(tab.id);
+    if (typeof window === "undefined") return;
+    const section = document.getElementById(tab.id);
+    if (section) {
+      const headerOffset = 140;
+      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
     onChange?.(tab);
   };
 
   return (
-    <div className=" mx-auto w-[490px] max-w-5xl">
+    <div className="w-full max-w-md mx-auto">
       {/* TRACK */}
-      <div className="relative flex h-[49px] items-stretch rounded-full bg-[#F2FFFD] overflow-hidden">
-        {/* OUTER PILL: handles position & segment width */}
+      <div className="relative flex h-[40px] sm:h-[45px] md:h-[49px] items-stretch rounded-full bg-[#F2FFFD] overflow-hidden">
         <div
           className="absolute inset-y-0 left-0 flex items-center transition-transform duration-300 ease-out"
           style={{
-            width: `${100 / tabCount}%`, // full segment width
+            width: `${100 / tabCount}%`,
             transform: `translateX(${activeIndex * 100}%)`,
           }}
         >
           {/* INNER PILL: actual green highlight (smaller) */}
-          <div
-            className="
-        mx-1 h-11 w-full rounded-full bg-[#13352D] shadow-lg
-        transition-all duration-300 ease-out
-      "
-          />
+          <div className="mx-1 h-[32px] sm:h-[36px] md:h-11 w-full rounded-full bg-[#13352D] shadow-lg transition-all duration-300 ease-out" />
         </div>
 
         {/* TABS */}
@@ -59,9 +57,10 @@ export function SectionSlider({ tabs, onChange }: SectionSliderProps) {
               <button
                 key={tab.id}
                 type="button"
-                onClick={() => setActiveId(tab.id)}
-                className="flex-1 cursor-pointer select-none px-4 text-center
-                           text-lg font-medium transition-colors duration-200 ease-out"
+                onClick={() => handleClick(tab)}
+                className="flex-1 cursor-pointer select-none px-2 sm:px-3 md:px-4 text-center text-sm sm:text-base md:text-lg font-medium transition-colors duration-200 ease-out"
+                aria-selected={isActive}
+                aria-label={`Go to ${tab.label} section`}
               >
                 <span className={isActive ? "text-white" : "text-[#13352D]"}>
                   {tab.label}

@@ -14,13 +14,23 @@ const Card: React.FC<CardProps> = ({
   children,
   ...rest
 }) => {
+  const computedStyle: React.CSSProperties = {
+    width: "100%",
+    maxWidth: width,
+    ...style,
+  };
+
+  if (height && height !== "fit-content" && height !== "auto") {
+    computedStyle.minHeight = height;
+  }
+
   return (
     <div
       className={cn(
-        " rounded-bl-3xl rounded-tr-3xl bg-white p-6 text-pr_dg ",
+        "rounded-bl-3xl rounded-tr-3xl bg-white p-6 text-pr_dg ",
         className
       )}
-      style={{ width, height, ...style }}
+      style={computedStyle}
       {...rest}
     >
       {children}
