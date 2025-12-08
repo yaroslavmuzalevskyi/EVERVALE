@@ -18,7 +18,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   sectionId,
 }) => {
   return (
-    <section id={sectionId} className={cn("w-full mb-52", className)}>
+    <section id={sectionId} className={cn("w-full mb-52 ", className)}>
       <div className="flex flex-col gap-14">
         <InfoContainer
           title="Get in Touch."
@@ -30,8 +30,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({
           Feel free to contact us, let us know how we can help!
         </InfoContainer>
 
-        <div className="flex justify-between">
-          <div className="flex flex-col justify-between text-pr_w">
+        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+          <div className="flex flex-col gap-8 text-pr_w md:justify-between">
             <div>
               <p className="text-sm uppercase text-white/60">Email</p>
               <p className="mt-1 text-2xl font-medium text-pr_y">
@@ -89,51 +89,52 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
             </div>
           </div>
-
-          <Card width="680px" className="bg-[#F2FFFD] text-pr_dg">
-            <form className="flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-pr_dg">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Michael Alfredo"
-                  className="h-12 rounded-xl border border-pr_dg/30 bg-transparent px-4 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-pr_dg">
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Example Co."
-                  className="h-12 rounded-xl border border-pr_dg/30 bg-transparent px-4 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-pr_dg">
-                  Company Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="h-12 rounded-xl border border-pr_dg/30 bg-transparent px-4 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-pr_dg">
-                  Message
-                </label>
-                <textarea
-                  placeholder="Let us know how we can help"
-                  className="min-h-[120px] rounded-xl border border-pr_dg/30 bg-transparent px-4 py-3 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
-                />
-              </div>
-              <Button variant="contact">Send Message</Button>
-            </form>
-          </Card>
+          <div className="w-full md:ml-auto md:max-w-[680px]">
+            <Card width="100%" className="bg-[#F2FFFD] text-pr_dg">
+              <form className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-medium text-pr_dg">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Michael Alfredo"
+                    className="h-12 rounded-xl border border-pr_dg/30 bg-transparent px-4 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-medium text-pr_dg">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example Co."
+                    className="h-12 rounded-xl border border-pr_dg/30 bg-transparent px-4 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-medium text-pr_dg">
+                    Company Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="you@example.com"
+                    className="h-12 rounded-xl border border-pr_dg/30 bg-transparent px-4 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-medium text-pr_dg">
+                    Message
+                  </label>
+                  <textarea
+                    placeholder="Let us know how we can help"
+                    className="min-h-[120px] rounded-xl border border-pr_dg/30 bg-transparent px-4 py-3 text-pr_dg outline-none transition focus:border-pr_dg focus:ring-2 focus:ring-pr_lg/30"
+                  />
+                </div>
+                <Button variant="contact">Send Message</Button>
+              </form>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

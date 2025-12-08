@@ -24,7 +24,8 @@ export function SectionSlider({
     const section = document.getElementById(tab.id);
     if (section) {
       const headerOffset = 140;
-      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
+      const elementPosition =
+        section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       window.scrollTo({
         top: offsetPosition,
@@ -35,7 +36,7 @@ export function SectionSlider({
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="mx-auto lg:mx-0 w-full min-w-0 lg:max-w-[640px] xl:max-w-[700px] lg:flex-1">
       {/* TRACK */}
       <div className="relative flex h-[40px] sm:h-[45px] md:h-[49px] items-stretch rounded-full bg-[#F2FFFD] overflow-hidden">
         <div

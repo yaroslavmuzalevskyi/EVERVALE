@@ -26,7 +26,7 @@ const FooterColumn: React.FC<FooterColumnProps> = ({
   className,
 }) => {
   return (
-    <div className={`w-full flex flex-col gap-4 ${className ?? ""}`}>
+    <div className={`w-full flex flex-col gap-4 whitespace-nowrap ${className ?? ""}`}>
       <h2 className=" display-sm text-pr_y">{title}</h2>
       <a href={href1}>{link2}</a>
       <a href={href2}>{link1}</a>

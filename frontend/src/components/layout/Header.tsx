@@ -47,7 +47,7 @@ const Header = () => {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-pr_dg/90 backdrop-blur">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-[130px]">
           {/* Desktop (1024px+) */}
-          <div className="hidden lg:flex h-[80px] lg:h-[96px] items-center justify-between">
+          <div className="hidden lg:flex h-[80px] lg:h-[96px] items-center justify-between gap-10">
             <Logo />
             <SectionSlider
               tabs={tabs}
@@ -62,29 +62,8 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Tablet (768px - 1024px) */}
-          <div className="hidden md:flex lg:hidden flex-col">
-            <div className="flex h-[80px] md:h-[96px] items-center justify-between">
-              <Logo />
-              <Button
-                variant="header"
-                className="text-sm md:text-base"
-                onClick={() => setIsCatalogModalOpen(true)}
-              >
-                Request Catalog
-              </Button>
-            </div>
-            <div className="w-full pb-4 md:pb-6 border-t border-white/10">
-              <SectionSlider
-                tabs={tabs}
-                activeId={activeSection}
-                onChange={handleTabClick}
-              />
-            </div>
-          </div>
-
-          {/* Mobile (< 768px) */}
-          <div className="md:hidden flex h-[70px] sm:h-[80px] items-center justify-between">
+          {/* Burger navigation (<= 1024px) */}
+          <div className="flex h-[70px] sm:h-[80px] md:h-[96px] items-center justify-between lg:hidden">
             <Logo />
             <div className="flex items-center gap-2">
               <button
@@ -105,7 +84,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[70px] sm:top-[80px] z-40 md:hidden border-b border-white/10 bg-pr_dg/95 backdrop-blur animate-in slide-in-from-top-2 duration-300">
+        <div className="fixed inset-x-0 top-[70px] sm:top-[80px] md:top-[96px] z-40 lg:hidden border-b border-white/10 bg-pr_dg/95 backdrop-blur animate-in slide-in-from-top-2 duration-300">
           <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6">
             <div className="py-4 border-b border-white/10">
               <SectionSlider
